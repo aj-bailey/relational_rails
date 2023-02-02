@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Breweries Beers Index Page' do
-  # User Story 5, Parent Children Index 
-
-  # As a visitor
-  # When I visit '/parents/:parent_id/child_table_name'
-  # Then I see each Child that is associated with that Parent with each Child's attributes
-  # (data from each column that is on the child table)
   let!(:brewery_1) { Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23) }
   let!(:brewery_2) { Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12) }
 
@@ -39,6 +33,12 @@ RSpec.describe 'Breweries Beers Index Page' do
 
         expect(page).to have_content("Nitro: #{beer_1.nitro}")
         expect(page).to have_content("Nitro: #{beer_2.nitro}")
+      end
+
+      it "will not display other brewery's beer attributes" do
+        visit "/breweries/#{brewery_1.id}/beers"
+
+        expect(page).to_not have_content(beer_3.id)
       end
     end
   end

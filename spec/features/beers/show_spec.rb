@@ -1,8 +1,4 @@
 require 'rails_helper'
-# As a visitor
-# When I visit '/child_table_name/:id'
-# Then I see the child with that id including the child's attributes
-# (data from each column that is on the child table)
 
 RSpec.describe "Beers Show Page", type: :feature do
   let!(:brewery_1) { Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23) }
