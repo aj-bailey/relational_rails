@@ -1,0 +1,9 @@
+<% @beers.each do |beer| %>
+  <h2>Beer ID: <%= beer.id %></h2>
+  <p>Style: <%= beer.style %></p>
+  <p>ABV: <%= beer.abv %></p>
+  <p>Nitro: <%= beer.nitro %></p>
+  <p>Brewery ID: <%= beer.brewery_id %></p>
+  <p>Created at: <%= beer.created_at %></p>
+  <p>Updated at: <%= beer.updated_at %></p>
+<%end%>
