@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Breweries Show Page", type: :feature do
-  # As a visitor
-  # When I visit '/breweries/:id'
-  # Then I see the parent with that id including the parent's attributes
-  # (data from each column that is on the parent table)
-
   let!(:brewery_1) { Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23) }
   let!(:brewery_2) { Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12) }
 
