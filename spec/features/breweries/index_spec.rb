@@ -1,17 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe "Breweries Index Page", type: :feature do
-  let!(:brewery_1) { Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23) }
-  let!(:brewery_2) { Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12) }
-
   describe "As a visitor" do
+    before(:each) do
+      @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23)
+      sleep(1)
+      @brewery_2 = Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12)
+
+      visit '/breweries'
+    end
+
     describe "when I visit '/breweries'" do
       it 'can see the name of each brewery record in the system' do 
-        visit '/breweries'
+        expect(page).to have_content(@brewery_1.name)
+        expect(page).to have_content(@brewery_2.name)
+      end
+
+      it 'can see that records are ordered by most recently created first' do
+        expect(@brewery_2.name).to appear_before(@brewery_1.name)
+      end
+
+      xit 'can see when it was created next to each record' do
         
-        expect(page).to have_content(brewery_1.name)
-        expect(page).to have_content(brewery_2.name)
       end
     end
   end
+
+  # User Story 6, Parent Index sorted by Most Recently Created 
+
+  # As a visitor
+  # When I visit the parent index,
+  # I see that records are ordered by most recently created first
+  # And next to each of the records I see when it was created
 end
