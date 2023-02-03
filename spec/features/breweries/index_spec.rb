@@ -21,7 +21,6 @@ RSpec.describe "Breweries Index Page", type: :feature do
       end
 
       it 'can see when it was created next to each record' do
-        # Should I test it literally being next to the record?
         expect(page).to have_content(@brewery_1.created_at)
         expect(page).to have_content(@brewery_2.created_at)
       end

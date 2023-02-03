@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Application Pages' do
-  # User Story 8, Beer Index Link
-
-  # As a visitor
-  # When I visit any page on the site
-  # Then I see a link at the top of the page that takes me to the Beer Index
   describe "As a visitor" do 
     describe "when I visit any page on the site" do
       before(:each) do
