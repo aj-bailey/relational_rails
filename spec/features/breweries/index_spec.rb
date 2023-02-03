@@ -20,16 +20,11 @@ RSpec.describe "Breweries Index Page", type: :feature do
         expect(@brewery_2.name).to appear_before(@brewery_1.name)
       end
 
-      xit 'can see when it was created next to each record' do
-        
+      it 'can see when it was created next to each record' do
+        # Should I test it literally being next to the record?
+        expect(page).to have_content(@brewery_1.created_at)
+        expect(page).to have_content(@brewery_2.created_at)
       end
     end
   end
-
-  # User Story 6, Parent Index sorted by Most Recently Created 
-
-  # As a visitor
-  # When I visit the parent index,
-  # I see that records are ordered by most recently created first
-  # And next to each of the records I see when it was created
 end
