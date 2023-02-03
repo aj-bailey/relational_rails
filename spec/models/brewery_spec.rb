@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Brewery, type: :model do
+  describe 'relationships' do
+    it { should have_many :beers }
+  end
+
   describe 'class methods' do
     before(:each) do
       @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23)
