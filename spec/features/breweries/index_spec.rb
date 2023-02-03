@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe "Breweries Index Page", type: :feature do
   describe "As a visitor" do
     before(:each) do
-      @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23)
-      sleep(1)
-      @brewery_2 = Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12)
+      @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23, created_at: Date.new)
+      @brewery_2 = Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12, created_at: Date.new.next)
 
       visit '/breweries'
     end
