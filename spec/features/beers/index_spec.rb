@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Beers Index Page", type: :feature do
-  # User Story 3, Child Index 
-
-  # As a visitor
-  # When I visit '/child_table_name'
-  # Then I see each Child in the system including the Child's attributes
-  # (data from each column that is on the child table)
   let!(:brewery_1) { Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23) }
   let!(:brewery_2) { Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12) }
 
