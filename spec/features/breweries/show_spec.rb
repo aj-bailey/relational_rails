@@ -28,6 +28,18 @@ RSpec.describe "Breweries Show Page", type: :feature do
  
         expect(page).to have_content("Number of Beers: #{brewery_1.num_beers}")
       end
+
+      # User Story 10, Parent Child Index Link
+
+      # As a visitor
+      # When I visit a parent show page ('/parents/:id')
+      # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+
+      it "can see a link to take me to that brewery's beers page" do
+        visit "/breweries/#{brewery_1.id}"
+
+        expect(page).to have_link("#{brewery_1.name}'s Beer", href: "/breweries/#{brewery_1.id}/beers")
+      end
     end
   end
 end
