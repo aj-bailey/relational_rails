@@ -16,4 +16,18 @@ RSpec.describe Brewery, type: :model do
       end
     end
   end
+
+  describe 'instance methods' do
+    describe '#num_beers' do
+      it 'can return the number of beers the brewery has' do
+        @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23)
+        @beer_1 = Beer.create!(brewery: @brewery_1, style: "IPA", abv: 6.9, nitro: false)
+        @beer_2 = Beer.create!(brewery: @brewery_1, style: "Brown Ale", abv: 5.2, nitro: false)
+        @beer_3 = Beer.create!(brewery: @brewery_1, style: "Pale Ale", abv: 5.4, nitro: false)
+        @beer_4 = Beer.create!(brewery: @brewery_1, style: "Stout", abv: 4.9, nitro: true)
+        
+        expect(@brewery_1.num_beers).to eq(4)
+      end
+    end
+  end
 end
