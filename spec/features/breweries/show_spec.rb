@@ -22,6 +22,12 @@ RSpec.describe "Breweries Show Page", type: :feature do
 
         expect(page).to_not have_content(brewery_2.id)
       end
+
+      it 'can see a count of the number of beers associated with this brewery' do
+        visit "/breweries/#{brewery_1.id}"
+ 
+        expect(page).to have_content("Number of Beers: #{brewery_1.num_beers}")
+      end
     end
   end
 end
