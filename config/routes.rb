@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post '/breweries', to: 'breweries#create'
   get '/breweries/:id/edit', to: 'breweries#edit'
   patch '/breweries/:id', to: 'breweries#update'
+  get '/breweries/:id/beers/new', to: 'brewery_beers#new'
+  post '/breweries/:id/beers', to: 'brewery_beers#create'
 end
