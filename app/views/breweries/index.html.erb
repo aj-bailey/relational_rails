@@ -1,3 +1,9 @@
 <% @breweries.each do |brewery| %>
-  <p><%= brewery.name %>   || Created at: <%= brewery.created_at %> <p>
+  <p>
+    <%= brewery.name %>   || Created at: <%= brewery.created_at %> 
+  <p>
 <%end%>
+
+<p>
+  <a href="/breweries/new">New Brewery</a>
+</p>
