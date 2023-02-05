@@ -7,13 +7,13 @@ RSpec.describe "Beers Index Page", type: :feature do
 
     @beer_1 = Beer.create!(nitro: true, style: "Stout", abv: 4.9, brewery: @brewery_1)
     @beer_2 = Beer.create!(nitro: false, style: "IPA", abv: 7.0, brewery: @brewery_2)
+
+    visit "/beers"
   end
 
   describe "As a visitor" do
     describe "when I visit '/beers'" do
       it "can see each beer in the system including the beer's attributes" do 
-        visit "/beers"
-        
         expect(page).to have_content("Beer ID: #{@beer_1.id}")
         expect(page).to have_content("Beer ID: #{@beer_2.id}")
 

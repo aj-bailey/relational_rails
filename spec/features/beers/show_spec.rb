@@ -26,6 +26,14 @@ RSpec.describe "Beers Show Page", type: :feature do
       it "will not display other beer attributes" do
         expect(page).to_not have_content(@beer_2.id)
       end
+
+      it 'can see a link to update a beer record, "Update Beer", to be taken to /beers/:id/edit' do
+        expect(page).to have_link("Update Beer", href: "/beers/#{@beer_1.id}/edit")
+
+        click_link "Update Beer"
+
+        expect(current_path).to eq("/beers/#{@beer_1.id}/edit") 
+      end
     end
   end
 end
