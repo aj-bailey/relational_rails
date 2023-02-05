@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Breweries New Page", type: :feature do
   describe 'As a visitor' do
-    describe 'when I visit /parents/new' do
+    describe 'when I visit /breweries/new' do
       before(:each) do
         visit '/breweries/new'
       end
