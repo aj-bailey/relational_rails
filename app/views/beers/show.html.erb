@@ -6,4 +6,4 @@
 <p>Created at: <%= @beer.created_at %></p>
 <p>Updated at: <%= @beer.updated_at %></p>
 <br>
-<p><a href= "/beers/<%= @beer.id %>/edit">Update Beer</a></p>
+<p><%= link_to "Update Beer", "/beers/#{@beer.id}/edit" %></p>

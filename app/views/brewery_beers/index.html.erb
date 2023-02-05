@@ -10,5 +10,5 @@
   <p>Updated at: <%= beer.updated_at %></p>
 <%end%>
 <br>
-<p><a href="/breweries/<%= @brewery.id %>/beers/new">Create Beer</a></p>
-<p><a href="/breweries/<%= @brewery.id %>/beers?ordered=true">Order Alphabetically</a></p>
+<p><%= link_to "Create Beer", "/breweries/#{@brewery.id}/beers/new" %></p>
+<p><%= link_to "Order Alphabetically", "/breweries/#{@brewery.id}/beers?ordered=true" %></p>
