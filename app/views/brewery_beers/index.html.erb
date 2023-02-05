@@ -9,3 +9,6 @@
   <p>Created at: <%= beer.created_at %></p>
   <p>Updated at: <%= beer.updated_at %></p>
 <%end%>
+<br>
+<p><%= link_to "Create Beer", "/breweries/#{@brewery.id}/beers/new" %></p>
+<p><%= link_to "Order Alphabetically", "/breweries/#{@brewery.id}/beers?ordered=true" %></p>

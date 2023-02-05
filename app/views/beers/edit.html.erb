@@ -1,0 +1,17 @@
+<%= form_with url: "/beers/#{@beer.id}", method: :patch, local: true do |form| %>
+  <br>
+  <%= form.label :style, "Style:" %>
+  <%= form.text_field :style, value: @beer.style %>
+  <br>
+
+  <%= form.label :abv, "ABV:" %>
+  <%= form.text_field :abv, value: @beer.abv %>
+  <br>
+
+  <%= form.label :nitro, "Nitro:" %> <br>
+  <%= form.radio_button :nitro, true, checked: @beer.nitro %> True <br>
+  <%= form.radio_button :nitro, false, checked: !@beer.nitro %> False
+  <br><br>
+
+  <%= form.submit "Update Beer" %>
+<% end %>

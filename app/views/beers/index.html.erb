@@ -6,4 +6,5 @@
   <p>Brewery ID: <%= beer.brewery_id %></p>
   <p>Created at: <%= beer.created_at %></p>
   <p>Updated at: <%= beer.updated_at %></p>
+  <p><%= link_to "Edit Beer", "/beers/#{beer.id}/edit" %>
 <%end%>
