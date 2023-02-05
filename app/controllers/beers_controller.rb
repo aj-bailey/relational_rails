@@ -1,6 +1,6 @@
 class BeersController < ApplicationController
   def index
-    @beers = Beer.all
+    @beers = Beer.list_by_nitro_true
   end
 
   def show
