@@ -23,6 +23,14 @@ RSpec.describe "Breweries Index Page", type: :feature do
         expect(page).to have_content(@brewery_1.created_at)
         expect(page).to have_content(@brewery_2.created_at)
       end
+
+      it 'can see a link to create a new Brewery record, "New Brewery", to be taken to /breweries/new' do
+        expect(page).to have_link("New Brewery", href: "/breweries/new")
+
+        click_link "New Brewery"
+
+        expect(current_path).to eq("/breweries/new") 
+      end
     end
   end
 end
