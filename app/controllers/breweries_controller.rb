@@ -15,6 +15,18 @@ class BreweriesController < ApplicationController
     redirect_to "/breweries"
   end
 
+  def edit
+    @brewery = Brewery.find(params[:id])
+  end
+
+  def update
+    brewery = Brewery.find(params[:id])
+
+    brewery.update(brewery_params)
+
+    redirect_to "/breweries"
+  end
+
   private
   def brewery_params
     params.permit(:name, :barrel_program, :num_taps)
