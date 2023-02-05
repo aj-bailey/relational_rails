@@ -6,17 +6,24 @@ RSpec.describe Beer, type: :model do
   end
 
   describe 'class methods' do
-    describe '#list_by_nitro_true' do
-      before(:each) do
-        @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23, created_at: Date.new)
+    before(:each) do
+      @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23, created_at: Date.new)
 
-        @beer_1 = Beer.create!(nitro: true, style: "Stout", abv: 4.9, brewery: @brewery_1)
-        @beer_2 = Beer.create!(nitro: false, style: "IPA", abv: 6.9, brewery: @brewery_1)
-        @beer_3 = Beer.create!(nitro: true, style: "ESB", abv: 5.3, brewery: @brewery_1)
-      end
+      @beer_1 = Beer.create!(nitro: true, style: "Stout", abv: 4.9, brewery: @brewery_1)
+      @beer_2 = Beer.create!(nitro: false, style: "IPA", abv: 6.9, brewery: @brewery_1)
+      @beer_3 = Beer.create!(nitro: true, style: "ESB", abv: 5.3, brewery: @brewery_1)
+    end
+
+    describe '#list_by_nitro_true' do
 
       it 'retrieves all beer records where nitro column is true' do
         expect(Beer.list_by_nitro_true).to eq([@beer_1, @beer_3])
+      end
+    end
+
+    describe '#order_by_alphabetical_style' do
+      it 'orders all beer records by alphabetical' do
+        expect(Beer.order_by_alphabetical_style).to eq([@beer_3, @beer_2, @beer_1])
       end
     end
   end
