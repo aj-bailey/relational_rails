@@ -1,7 +1,7 @@
 class BreweryBeersController < ApplicationController
   def index
     @brewery = Brewery.find(params[:brewery_id])
-    @beers = @brewery.beers    
+    params[:ordered] == "true" ? @beers = @brewery.beers.order_by_alphabetical_style : @beers = @brewery.beers
   end
   
   def new
