@@ -27,6 +27,14 @@ class BreweriesController < ApplicationController
     redirect_to "/breweries"
   end
 
+  def delete
+    brewery = Brewery.find(params[:id])
+    beer = Beer.where(brewery_id: brewery.id)
+    beer.delete_all
+    brewery.delete
+    redirect_to "/breweries"
+  end
+
   private
   def brewery_params
     params.permit(:name, :barrel_program, :num_taps)
