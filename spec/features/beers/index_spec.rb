@@ -22,6 +22,14 @@ RSpec.describe "Beers Index Page", type: :feature do
         expect(page).to have_content("ABV: #{@beer_1.abv}")
         expect(page).to have_content("Nitro: #{@beer_1.nitro}")
       end
+
+      it "can see a link next to each beer leading to their edit page" do
+        expect(page).to have_link("Edit Beer", href: "/beers/#{@beer_1.id}/edit")
+
+        click_link("Edit Beer")
+
+        expect(current_path).to eq("/beers/#{@beer_1.id}/edit")
+      end
     end
   end
 end
