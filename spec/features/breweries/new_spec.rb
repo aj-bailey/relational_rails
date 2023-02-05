@@ -17,9 +17,9 @@ RSpec.describe "Breweries New Page", type: :feature do
         expect(page).to have_field(:num_taps)
       end
       
-      it 'can fill out form and click submit button on form to create new parent record and redirect to /parents' do
+      it 'can fill out form and click submit button on form to create new parent record and redirect to /breweries' do
         fill_in(:name, with: "Bonfire Brewing")
-        choose 'barrel_program_true'
+        choose('barrel_program_true')
         fill_in(:num_taps, with: "23")
 
         click_button("Create Brewery")
