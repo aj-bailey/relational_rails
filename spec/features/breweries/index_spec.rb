@@ -36,7 +36,7 @@ RSpec.describe "Breweries Index Page", type: :feature do
         expect(page).to have_link("Edit Brewery", href: "/breweries/#{@brewery_1.id}/edit")
         expect(page).to have_link("Edit Brewery", href: "/breweries/#{@brewery_2.id}/edit")
 
-        first(:link, "Edit Brewery").click
+        click_link("Edit Brewery", match: :first)
 
         expect(current_path).to eq("/breweries/#{@brewery_2.id}/edit")
       end
