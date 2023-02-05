@@ -44,9 +44,18 @@ RSpec.describe 'Breweries Beers Index Page' do
       it 'can see a link to add a new adoptable beer for that brewery titled "Create Beer"' do
         expect(page).to have_link("Create Beer", href: "/breweries/#{@brewery_1.id}/beers/new")
 
-        click_link "Create Beer"
+        click_link("Create Beer")
 
         expect(current_path).to eq("/breweries/#{@brewery_1.id}/beers/new") 
+      end
+
+      it 'can see a link to sort children in alphabetical style' do
+        expect(page).to have_link("Order Alphabetically", href: "/breweries/#{@brewery_1.id}/beers?ordered=true")
+
+        click_link("Order Alphabetically")
+
+        expect(current_path).to eq("/breweries/#{@brewery_1.id}/beers")
+        expect(@beer_2.style).to appear_before(@beer_1.style)
       end
     end
   end
