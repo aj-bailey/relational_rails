@@ -12,3 +12,7 @@
 <br>
 <p><%= link_to "Create Beer", "/breweries/#{@brewery.id}/beers/new" %></p>
 <p><%= link_to "Order Alphabetically", "/breweries/#{@brewery.id}/beers?ordered=true" %></p>
+<%= form_with url: "/breweries/#{@brewery.id}/beers", method: :get, local: true do |form| %>
+  <%= form.label :threshold, "Only returns records with more than " %>
+  <%= form.text_field :threshold, value: "0" %> ABV <%= form.submit "Submit" %>
+<% end %>
