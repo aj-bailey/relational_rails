@@ -43,7 +43,7 @@ RSpec.describe "Breweries Show Page", type: :feature do
       end
 
       it 'can see a link to delete the brewery, including all child beers of that brewery, and be redirected to parent index page' do
-        expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_1.id}/delete")
+        expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_1.id}")
         
         click_link("Delete Brewery")
         
