@@ -8,6 +8,7 @@
   <p>Brewery ID: <%= beer.brewery_id %></p>
   <p>Created at: <%= beer.created_at %></p>
   <p>Updated at: <%= beer.updated_at %></p>
+  <p><%= link_to "Delete Beer", "/beers/#{beer.id}", method: :delete %></p>
 <%end%>
 <br>
 <p><%= link_to "Create Beer", "/breweries/#{@brewery.id}/beers/new" %></p>
