@@ -21,9 +21,7 @@ class BreweriesController < ApplicationController
 
   def update
     brewery = Brewery.find(params[:id])
-
     brewery.update(brewery_params)
-
     redirect_to "/breweries"
   end
 

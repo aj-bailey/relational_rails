@@ -14,20 +14,19 @@ RSpec.describe Beer, type: :model do
       @beer_3 = Beer.create!(nitro: true, style: "ESB", abv: 5.3, brewery: @brewery_1)
     end
 
-    describe '#list_by_nitro_true' do
-
+    describe '::list_by_nitro_true' do
       it 'retrieves all beer records where nitro column is true' do
         expect(Beer.list_by_nitro_true).to eq([@beer_1, @beer_3])
       end
     end
 
-    describe '#order_by_alphabetical_style' do
+    describe '::order_by_alphabetical_style' do
       it 'orders all beer records by alphabetical' do
         expect(Beer.order_by_alphabetical_style).to eq([@beer_3, @beer_2, @beer_1])
       end
     end
 
-    describe '#list_above_abv' do
+    describe '::list_above_abv' do
       it 'retrieves all beer records above argument abv' do
         expect(Beer.list_above_abv(5.0)).to eq([@beer_2, @beer_3])
       end
