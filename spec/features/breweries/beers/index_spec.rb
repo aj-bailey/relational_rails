@@ -57,6 +57,18 @@ RSpec.describe 'Breweries Beers Index Page' do
         expect(current_path).to eq("/breweries/#{@brewery_1.id}/beers")
         expect(@beer_2.style).to appear_before(@beer_1.style)
       end
+
+      it 'can see a form to input a threshold value to only display records above that ABV' do
+        expect(page).to have_field(:threshold, with: "0")
+        expect(page).to have_button("Submit")
+
+        fill_in(:threshold, with: "5.1")
+        
+        click_button("Submit")
+
+        expect(current_path).to eq("/breweries/#{@brewery_1.id}/beers")
+        expect(page).to_not have_content(@beer_1.id)
+      end
     end
   end
 end
