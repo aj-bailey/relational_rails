@@ -1,6 +1,8 @@
 <% @breweries.each do |brewery| %>
   <p>
-    <%= brewery.name %>   || Created at: <%= brewery.created_at %> || <%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %>
+    <%= brewery.name %> (ID: <%= brewery.id %>)  || Created at: <%= brewery.created_at %>
+    || <%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %>
+    || <%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %>
   <p>
 <%end%>
 
