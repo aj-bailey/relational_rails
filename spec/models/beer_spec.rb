@@ -26,5 +26,11 @@ RSpec.describe Beer, type: :model do
         expect(Beer.order_by_alphabetical_style).to eq([@beer_3, @beer_2, @beer_1])
       end
     end
+
+    describe '#list_above_abv' do
+      it 'retrieves all beer records above argument abv' do
+        expect(Beer.list_above_abv(5.0)).to eq([@beer_2, @beer_3])
+      end
+    end
   end
 end
