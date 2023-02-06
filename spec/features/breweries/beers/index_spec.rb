@@ -69,6 +69,15 @@ RSpec.describe 'Breweries Beers Index Page' do
         expect(current_path).to eq("/breweries/#{@brewery_1.id}/beers")
         expect(page).to_not have_content(@beer_1.id)
       end
+
+      it "can see a link next to each beer to delete the beer and return back to the beers table without that beer" do
+        expect(page).to have_link("Delete Beer", href: "/beers/#{@beer_1.id}")
+
+        click_link("Delete Beer", match: :first)
+
+        expect(current_path).to eq("/beers")
+        expect(page).to_not have_content(@beer_1.id)
+      end
     end
   end
 end

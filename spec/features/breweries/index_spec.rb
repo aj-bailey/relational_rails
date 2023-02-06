@@ -42,7 +42,6 @@ RSpec.describe "Breweries Index Page", type: :feature do
       end
 
       it 'can see a link that deletes the brewery and returns to the index page without that parent' do
-        save_and_open_page
         expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_1.id}")
         expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_2.id}")
 
