@@ -27,12 +27,21 @@ RSpec.describe "Beers Show Page", type: :feature do
         expect(page).to_not have_content(@beer_2.id)
       end
 
-      it 'can see a link to update a beer record, "Update Beer", to be taken to /beers/:id/edit' do
+      it 'can see a link, "Update Beer", to update a beer record and be taken to /beers/:id/edit' do
         expect(page).to have_link("Update Beer", href: "/beers/#{@beer_1.id}/edit")
 
         click_link "Update Beer"
 
         expect(current_path).to eq("/beers/#{@beer_1.id}/edit") 
+      end
+
+      it 'can see a link, "Delete Beer", to delete a beer record and be taken to /beers' do
+        expect(page).to have_link("Delete Beer", href: "/beers/#{@beer_1.id}")
+
+        click_link("Delete Beer")
+
+        expect(current_path).to eq("/beers")
+        expect(page).to_not have_content(@beer_1.id)
       end
     end
   end
