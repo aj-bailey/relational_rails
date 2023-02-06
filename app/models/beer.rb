@@ -8,4 +8,8 @@ class Beer < ApplicationRecord
   def self.order_by_alphabetical_style
     self.order(style: :asc)
   end
+
+  def self.list_above_abv(abv)
+    self.where("abv > ?", abv)
+  end
 end
