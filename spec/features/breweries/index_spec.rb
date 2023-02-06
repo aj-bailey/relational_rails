@@ -40,6 +40,16 @@ RSpec.describe "Breweries Index Page", type: :feature do
 
         expect(current_path).to eq("/breweries/#{@brewery_2.id}/edit")
       end
+
+      it 'can see a link that deletes the brewery and returns to the index page without that parent' do
+        expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_1.id}")
+        expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_2.id}")
+
+        click_link("Delete Brewery", match: :first)
+
+        expect(current_path).to eq("/breweries")
+        expect(page).to_not have_content(@brewery_2.name)
+      end
     end
   end
 end

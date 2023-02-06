@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  delete '/beers/:id', to: 'beers#delete'
+  delete '/breweries/:id', to: 'breweries#delete'
+
   get '/beers', to: 'beers#index'
   get '/beers/:id', to: 'beers#show'
   get '/beers/:id/edit', to: 'beers#edit'

@@ -4,6 +4,9 @@ RSpec.describe "Breweries Show Page", type: :feature do
   before(:each) do
     @brewery_1 = Brewery.create!(name: "Bonfire Brewing", barrel_program: true, num_taps: 23)
     @brewery_2 = Brewery.create!(name: "Vail Brewing Company", barrel_program: false, num_taps: 12)
+
+    @beer_1 = Beer.create!(nitro: true, style: "Stout", abv: 4.9, brewery: @brewery_1)
+    @beer_2 = Beer.create!(nitro: false, style: "IPA", abv: 7.0, brewery: @brewery_2)
     
     visit "/breweries/#{@brewery_1.id}"
   end
@@ -37,6 +40,19 @@ RSpec.describe "Breweries Show Page", type: :feature do
         click_link("Update Brewery")
 
         expect(current_path).to eq("/breweries/#{@brewery_1.id}/edit")
+      end
+
+      it 'can see a link to delete the brewery, including all child beers of that brewery, and be redirected to parent index page' do
+        expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_1.id}")
+        
+        click_link("Delete Brewery")
+        
+        expect(current_path).to eq("/breweries")
+        expect(page).to_not have_content(@brewery_1.name)
+        
+        visit "/beers"
+
+        expect(page).to_not have_content(@beer_1.id)
       end
     end
   end

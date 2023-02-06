@@ -21,9 +21,15 @@ class BreweriesController < ApplicationController
 
   def update
     brewery = Brewery.find(params[:id])
-
     brewery.update(brewery_params)
+    redirect_to "/breweries"
+  end
 
+  def delete
+    brewery = Brewery.find(params[:id])
+    beer = Beer.where(brewery_id: brewery.id)
+    beer.delete_all
+    brewery.delete
     redirect_to "/breweries"
   end
 
