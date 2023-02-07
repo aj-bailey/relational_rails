@@ -13,7 +13,11 @@
  *= require_tree .
  *= require_self
  */
- header {
+h1 {
+  text-align: center;
+}
+
+header {
   display: flex;
   border-radius: 10px;
   background-image: linear-gradient(rgb(80, 89, 90),rgb(120, 151, 154));

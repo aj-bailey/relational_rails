@@ -1,14 +1,16 @@
 <div class="container">
   <% @breweries.each do |brewery| %>
     <div class="container_items"><p>
-      <%= brewery.name %> (ID: <%= brewery.id %>)  || Created at: <%= brewery.created_at %>
+      <h2><%= brewery.name %></h2>
+      <p>ID: <%= brewery.id %></p>
+      <p>Created at: <%= brewery.created_at %></p>
       <% if @order_by == "num_beers" %>
-        || Number of beers: <%= brewery.num_beers %>
+        <p>Number of beers: <%= brewery.num_beers %></p>
       <% end %>
-      || <%= link_to "Show Brewery", "/breweries/#{brewery.id}" %>
-      || <%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %>
-      || <%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %>
-    <p></div>
+      <p><%= link_to "Show Brewery", "/breweries/#{brewery.id}" %></p>
+      <p><%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %></p>
+      <p><%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %></p>
+    </div>
     <br>
   <%end%>
 
