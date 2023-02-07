@@ -1,18 +1,21 @@
-<%= form_with url: '/breweries', method: :post, local: true do |form| %>
-  <br>
-  <%= form.label :name, "Name: " %>
-  <%= form.text_field :name %>
-  <br><br>
+<div class="container">
+  <div class="container_items">
+    <%= form_with url: '/breweries', method: :post, local: true do |form| %>
+      <br>
+      <%= form.label :name, "Name: " %>
+      <%= form.text_field :name %>
+      <br><br>
 
-  <%= form.label :barrel_program, "Barrel program: " %> <br>
-  <%= form.radio_button :barrel_program, true %> True <br>
-  <%= form.radio_button :barrel_program, false %> False
-  <br><br>
+      <%= form.label :barrel_program, "Barrel program: " %> <br>
+      <%= form.radio_button :barrel_program, true %> True <br>
+      <%= form.radio_button :barrel_program, false %> False
+      <br><br>
 
-  <%= form.label :num_taps, "Number of taps: " %>
-  <%= form.text_field :num_taps %>
-  <br><br>
-  
+      <%= form.label :num_taps, "Number of taps: " %>
+      <%= form.text_field :num_taps %>
+      <br><br>
 
-  <%= form.submit "Create Brewery" %>
-<% end %>
+      <%= form.submit "Create Brewery" %>
+    <% end %>
+  </div>
+</div>

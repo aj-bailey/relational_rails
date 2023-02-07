@@ -1,19 +1,26 @@
-<h1><%= @brewery.name %>'s Beer List</h1>
+<div class="container">
+  <h1><%= @brewery.name %>'s Beer List</h1>
 
-<% @beers.each do |beer| %>
-  <h2>Beer ID: <%= beer.id %></h2>
-  <p>Style: <%= beer.style %></p>
-  <p>ABV: <%= beer.abv %></p>
-  <p>Nitro: <%= beer.nitro %></p>
-  <p>Brewery ID: <%= beer.brewery_id %></p>
-  <p>Created at: <%= beer.created_at %></p>
-  <p>Updated at: <%= beer.updated_at %></p>
-  <p><%= link_to "Delete Beer", "/beers/#{beer.id}", method: :delete %></p>
-<%end%>
-<br>
-<p><%= link_to "Create Beer", "/breweries/#{@brewery.id}/beers/new" %></p>
-<p><%= link_to "Order Alphabetically", "/breweries/#{@brewery.id}/beers?ordered=true" %></p>
-<%= form_with url: "/breweries/#{@brewery.id}/beers", method: :get, local: true do |form| %>
-  <%= form.label :threshold, "Only returns records with more than " %>
-  <%= form.text_field :threshold, value: "0" %> ABV <%= form.submit "Submit" %>
-<% end %>
+  <% @beers.each do |beer| %>
+    <div class="container_items">
+      <h2>Beer ID: <%= beer.id %></h2>
+      <p>Style: <%= beer.style %></p>
+      <p>ABV: <%= beer.abv %></p>
+      <p>Nitro: <%= beer.nitro %></p>
+      <p>Brewery ID: <%= beer.brewery_id %></p>
+      <p>Created at: <%= beer.created_at %></p>
+      <p>Updated at: <%= beer.updated_at %></p>
+      <p><%= link_to "Delete Beer", "/beers/#{beer.id}", method: :delete %></p>
+    </div>
+    <%# <br> %>
+  <%end%>
+  <br>
+  <div class="container_items">
+    <p><%= link_to "Create Beer", "/breweries/#{@brewery.id}/beers/new" %></p>
+    <p><%= link_to "Order Alphabetically", "/breweries/#{@brewery.id}/beers?ordered=true" %></p>
+    <%= form_with url: "/breweries/#{@brewery.id}/beers", method: :get, local: true do |form| %>
+      <%= form.label :threshold, "Only returns records with more than " %>
+      <%= form.text_field :threshold, value: "0" %> ABV <%= form.submit "Submit" %>
+    <% end %>
+  </div>
+</div>

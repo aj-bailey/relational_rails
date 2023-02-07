@@ -1,16 +1,20 @@
-<%= form_with url: "/breweries/#{@brewery.id}/beers", method: :post, local: true do |form| %>
-  <br>
-  <%= form.label :style, "Style: " %>
-  <%= form.text_field :style %>
-  <br><br>
+<div class="container">
+  <div class="container_items">
+    <%= form_with url: "/breweries/#{@brewery.id}/beers", method: :post, local: true do |form| %>
+      <br>
+      <%= form.label :style, "Style: " %>
+      <%= form.text_field :style %>
+      <br><br>
 
-  <%= form.label :abv, "ABV: " %>
-  <%= form.text_field :abv %>
-  <br><br>
+      <%= form.label :abv, "ABV: " %>
+      <%= form.text_field :abv %>
+      <br><br>
 
-  <%= form.label :nitro, "Nitro: " %> <br>
-  <%= form.radio_button :nitro, true %> True <br>
-  <%= form.radio_button :nitro, false %> False
-  <br><br>
-  <%= form.submit "Create Beer" %>
-<% end %>
+      <%= form.label :nitro, "Nitro: " %> <br>
+      <%= form.radio_button :nitro, true %> True <br>
+      <%= form.radio_button :nitro, false %> False
+      <br><br>
+      <%= form.submit "Create Beer" %>
+    <% end %>
+  </div>
+</div>

@@ -1,18 +1,22 @@
-<%= form_with url: "/breweries/#{@brewery.id}", method: :patch, local: true do |form| %>
-  <br>
-  <%= form.label :name, "Name: " %>
-  <%= form.text_field :name, value:  @brewery.name %>
-  <br><br>
+<div class="container">
+  <div class="container_items">
+    <%= form_with url: "/breweries/#{@brewery.id}", method: :patch, local: true do |form| %>
+      <br>
+      <%= form.label :name, "Name: " %>
+      <%= form.text_field :name, value:  @brewery.name %>
+      <br><br>
 
-  <%= form.label :barrel_program, "Barrel program: " %> <br>
-  <%= form.radio_button :barrel_program, true, checked: @brewery.barrel_program %> True <br>
-  <%= form.radio_button :barrel_program, false, checked: !@brewery.barrel_program %> False
-  <br><br>
+      <%= form.label :barrel_program, "Barrel program: " %> <br>
+      <%= form.radio_button :barrel_program, true, checked: @brewery.barrel_program %> True <br>
+      <%= form.radio_button :barrel_program, false, checked: !@brewery.barrel_program %> False
+      <br><br>
 
-  <%= form.label :num_taps, "Number of taps: " %>
-  <%= form.text_field :num_taps, value: @brewery.num_taps %>
-  <br><br>
-  
+      <%= form.label :num_taps, "Number of taps: " %>
+      <%= form.text_field :num_taps, value: @brewery.num_taps %>
+      <br><br>
+      
 
-  <%= form.submit "Update Brewery" %>
-<% end %>
+      <%= form.submit "Update Brewery" %>
+    <% end %>
+  </div>
+</div>
