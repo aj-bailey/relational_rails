@@ -71,9 +71,20 @@ RSpec.describe "Breweries Index Page", type: :feature do
         click_link "Order by Number of Beers"
 
         expect(current_path).to eq("/breweries")
-        save_and_open_page
+
         expect("Number of beers: 4").to appear_before("Number of beers: 3")
         expect("Number of beers: 3").to appear_before("Number of beers: 2")
+      end
+
+      it 'can see a text box with a search button to find exact match of text input' do
+        expect(page).to have_field(:exact_match)
+
+        fill_in :exact_match, with: "Bonfire Brewing"
+
+        click_button "Search Exact"
+
+        expect(page).to have_content("Bonfire Brewing")
+        expect(page).to_not have_content("Vail Brewing Company")
       end
     end
   end
