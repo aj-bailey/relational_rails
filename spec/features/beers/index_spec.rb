@@ -57,6 +57,16 @@ RSpec.describe "Beers Index Page", type: :feature do
         expect(page).to_not have_content(@beer_1.id)
       end
 
+      it 'can see a text box with a search button to find exact match of text input' do
+        expect(page).to have_field(:exact_match)
+        
+        fill_in :exact_match, with: "Stout"
+        click_button "Search Exact"
+
+        expect(page).to have_content("Stout")
+        expect(page).to_not have_content("India Pale Ale")
+      end
+
       it 'can see a text box with a search button to find partial match of text input' do
         beer_3 = Beer.create!(nitro: false, style: "Red Ale", abv: 5.2, brewery: @brewery_1)
 
