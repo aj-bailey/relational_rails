@@ -12,4 +12,8 @@ class Brewery < ApplicationRecord
   def self.order_by_num_beers_descending
     self.joins(:beers).group(:id).order('COUNT(beers.id) DESC')
   end
+
+  def self.exact_match(name)
+    self.where(name: name)
+  end
 end
