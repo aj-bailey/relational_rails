@@ -86,6 +86,19 @@ RSpec.describe "Breweries Index Page", type: :feature do
         expect(page).to have_content("Bonfire Brewing")
         expect(page).to_not have_content("Vail Brewing Company")
       end
+
+      it 'can see a text box with a search button to find partial match of text input' do
+        brewery_3 = Brewery.create!(name: "Russian River Brewing Company", barrel_program: true, num_taps: 20)
+        expect(page).to have_field(:partial_match)
+
+        fill_in :partial_match, with: "Company"
+
+        click_button "Search Partial"
+
+        expect(page).to have_content("Russian River Brewing Company")
+        expect(page).to have_content("Vail Brewing Company")
+        expect(page).to_not have_content("Bonfire Brewing")
+      end
     end
   end
 end
