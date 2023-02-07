@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   delete '/beers/:id', to: 'beers#delete'
   delete '/breweries/:id', to: 'breweries#delete'
 
+  get '/', to: 'welcomes#index'
   get '/beers', to: 'beers#index'
   get '/beers/:id', to: 'beers#show'
   get '/beers/:id/edit', to: 'beers#edit'
-
   get '/breweries', to: 'breweries#index'
   get '/breweries/new', to: 'breweries#new'
   get '/breweries/:id', to: 'breweries#show'

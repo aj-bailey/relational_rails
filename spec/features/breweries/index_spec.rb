@@ -27,16 +27,25 @@ RSpec.describe "Breweries Index Page", type: :feature do
       it 'can see a link to create a new Brewery record, "New Brewery", to be taken to /breweries/new' do
         expect(page).to have_link("New Brewery", href: "/breweries/new")
 
-        click_link("New Brewery")
+        click_link "New Brewery"
 
         expect(current_path).to eq("/breweries/new") 
+      end
+
+      it 'can see a link to show Brewery record, "Show Brewery", to be taken to /breweries/:id' do
+        expect(page).to have_link("Show Brewery", href: "/breweries/#{@brewery_2.id}")
+
+        click_link "Show Brewery", match: :first
+
+        expect(current_path).to eq("/breweries/#{@brewery_2.id}")
+        expect(page).to have_content(@brewery_2.id)
       end
 
       it "can see a link next to each brewery leading to their edit page" do
         expect(page).to have_link("Edit Brewery", href: "/breweries/#{@brewery_1.id}/edit")
         expect(page).to have_link("Edit Brewery", href: "/breweries/#{@brewery_2.id}/edit")
 
-        click_link("Edit Brewery", match: :first)
+        click_link "Edit Brewery", match: :first
 
         expect(current_path).to eq("/breweries/#{@brewery_2.id}/edit")
       end
@@ -45,7 +54,7 @@ RSpec.describe "Breweries Index Page", type: :feature do
         expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_1.id}")
         expect(page).to have_link("Delete Brewery", href: "/breweries/#{@brewery_2.id}")
 
-        click_link("Delete Brewery", match: :first)
+        click_link "Delete Brewery", match: :first
 
         expect(current_path).to eq("/breweries")
         expect(page).to_not have_content(@brewery_2.name)

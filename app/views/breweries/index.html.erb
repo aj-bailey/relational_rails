@@ -1,25 +1,33 @@
-<% @breweries.each do |brewery| %>
-  <p>
-    <%= brewery.name %> (ID: <%= brewery.id %>)  || Created at: <%= brewery.created_at %>
-    <% if @order_by == "num_beers" %>
-      || Number of beers: <%= brewery.num_beers %>
+<div class="container">
+  <% @breweries.each do |brewery| %>
+    <div class="container_items"><p>
+      <h2><%= brewery.name %></h2>
+      <p>ID: <%= brewery.id %></p>
+      <p>Created at: <%= brewery.created_at %></p>
+      <% if @order_by == "num_beers" %>
+        <p>Number of beers: <%= brewery.num_beers %></p>
+      <% end %>
+      <p><%= link_to "Show Brewery", "/breweries/#{brewery.id}" %></p>
+      <p><%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %></p>
+      <p><%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %></p>
+    </div>
+    <%# <br> %>
+  <%end%>
+
+  <div class="container_items">
+    <p><%= link_to "Order by Number of Beers", "/breweries?order_by=num_beers"%></p>
+    <p><%= link_to "New Brewery", "/breweries/new" %></p>
+
+    <%= form_with url: "/breweries", method: :get, local: true do |form| %>
+      <%= form.label :exact_match, "Search exact name: " %>
+      <%= form.text_field :exact_match %>
+      <%= form.submit "Search Exact" %>
     <% end %>
-    || <%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %>
-    || <%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %>
-  <p>
-<%end%>
-
-<p><%= link_to "Order by Number of Beers", "/breweries?order_by=num_beers"%></p>
-<p><%= link_to "New Brewery", "/breweries/new" %></p>
-
-<%= form_with url: "/breweries", method: :get, local: true do |form| %>
-  <%= form.label :exact_match, "Search exact name: " %>
-  <%= form.text_field :exact_match %>
-  <%= form.submit "Search Exact" %>
-<% end %>
-<br>
-<%= form_with url: "/breweries", method: :get, local: true do |form| %>
-  <%= form.label :partial_match, "Search partial name: " %>
-  <%= form.text_field :partial_match %>
-  <%= form.submit "Search Partial" %>
-<% end %>
+    <br>
+    <%= form_with url: "/breweries", method: :get, local: true do |form| %>
+      <%= form.label :partial_match, "Search partial name: " %>
+      <%= form.text_field :partial_match %>
+      <%= form.submit "Search Partial" %>
+    <% end %>
+  </div>
+</div>

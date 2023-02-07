@@ -1,8 +1,8 @@
 class BeersController < ApplicationController
   def index
-    if params[:exact_match] != nil
+    if params[:exact_match]
       @beers = Beer.exact_match(params[:exact_match])
-    elsif params[:partial_match] != nil
+    elsif params[:partial_match]
       @beers = Beer.partial_match(params[:partial_match])
     elsif params[:find] == "nitro_beers"
       @beers = Beer.list_by_nitro_true
