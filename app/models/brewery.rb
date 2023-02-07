@@ -16,4 +16,8 @@ class Brewery < ApplicationRecord
   def self.exact_match(name)
     self.where(name: name)
   end
+
+  def self.partial_match(name)
+    self.where('name like ?', "%#{name}%")
+  end
 end
