@@ -41,7 +41,7 @@ RSpec.describe "Beers Show Page", type: :feature do
         click_link("Delete Beer")
 
         expect(current_path).to eq("/beers")
-        expect(page).to_not have_content(@beer_1.id)
+        expect(page).to_not have_content("Beer ID: #{@beer_1.id}")
       end
     end
   end
