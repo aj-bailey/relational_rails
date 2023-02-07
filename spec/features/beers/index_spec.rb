@@ -39,6 +39,17 @@ RSpec.describe "Beers Index Page", type: :feature do
         expect(current_path).to eq("/beers")
         expect(page).to_not have_content(@beer_1.id)
       end
+
+      it 'can see a text box with a search button to find exact match of text input' do
+        expect(page).to have_field(:exact_match)
+
+        fill_in :exact_match, with: "IPA"
+
+        click_button "Search Exact"
+
+        expect(page).to have_content("IPA")
+        expect(page).to_not have_content("Stout")
+      end
     end
   end
 end
