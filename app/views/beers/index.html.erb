@@ -10,10 +10,11 @@
     <%= link_to "Edit Beer", "/beers/#{beer.id}/edit" %> ||
     <%= link_to "Delete Beer", "/beers/#{beer.id}", method: :delete %>
   </p>
+<%end%>
 
-  <%= form_with url: "/beers", method: :get, local: true do |form| %>
+<p><%= link_to "Show Nitro Beers", "/beers?find=nitro_beers"%></p>
+<%= form_with url: "/beers", method: :get, local: true do |form| %>
   <%= form.label :exact_match, "Search exact style: " %>
   <%= form.text_field :exact_match %>
   <%= form.submit "Search Exact" %>
 <% end %>
-<%end%>
