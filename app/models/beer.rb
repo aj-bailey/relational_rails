@@ -12,4 +12,12 @@ class Beer < ApplicationRecord
   def self.list_above_abv(abv)
     self.where("abv > ?", abv)
   end
+  
+  def self.exact_match(style)
+    self.where(style: style)
+  end
+
+  def self.partial_match(style)
+    self.where('style like ?', "%#{style}%")
+  end
 end

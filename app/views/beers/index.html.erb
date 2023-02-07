@@ -11,3 +11,16 @@
     <%= link_to "Delete Beer", "/beers/#{beer.id}", method: :delete %>
   </p>
 <%end%>
+
+<p><%= link_to "Show Nitro Beers", "/beers?find=nitro_beers"%></p>
+<%= form_with url: "/beers", method: :get, local: true do |form| %>
+  <%= form.label :exact_match, "Search exact style: " %>
+  <%= form.text_field :exact_match %>
+  <%= form.submit "Search Exact" %>
+<% end %>
+<br>
+<%= form_with url: "/beers", method: :get, local: true do |form| %>
+  <%= form.label :partial_match, "Search partial style: " %>
+  <%= form.text_field :partial_match %>
+  <%= form.submit "Search Partial" %>
+<% end %>
