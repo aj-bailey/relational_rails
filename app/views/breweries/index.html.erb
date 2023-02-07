@@ -1,11 +1,13 @@
 <% @breweries.each do |brewery| %>
   <p>
     <%= brewery.name %> (ID: <%= brewery.id %>)  || Created at: <%= brewery.created_at %>
+    <% if @order_by == "num_beers" %>
+      || Number of beers: <%= brewery.num_beers %>
+    <% end %>
     || <%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %>
     || <%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %>
   <p>
 <%end%>
 
-<p>
-  <%= link_to "New Brewery", "/breweries/new" %>
-</p>
+<p><%= link_to "Order by Number of Beers", "/breweries?order_by=num_beers"%></p>
+<p><%= link_to "New Brewery", "/breweries/new" %></p>

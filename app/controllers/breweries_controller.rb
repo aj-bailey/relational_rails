@@ -1,6 +1,13 @@
 class BreweriesController < ApplicationController
   def index
-    @breweries = Brewery.order_by_most_recently_created
+    @order_by = params[:order_by]
+
+    if params[:order_by] == "num_beers"
+      @breweries = Brewery.order_by_num_beers_descending
+      @order_by = params[:order_by]
+    else
+      @breweries = Brewery.order_by_most_recently_created      
+    end
   end
 
   def show
