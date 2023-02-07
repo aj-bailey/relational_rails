@@ -5,6 +5,8 @@ class BreweriesController < ApplicationController
     if params[:order_by] == "num_beers"
       @breweries = Brewery.order_by_num_beers_descending
       @order_by = params[:order_by]
+    elsif params[:exact_match] != nil
+      @breweries = Brewery.exact_match(params[:exact_match])
     else
       @breweries = Brewery.order_by_most_recently_created      
     end

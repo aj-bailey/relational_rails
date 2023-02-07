@@ -11,3 +11,9 @@
 
 <p><%= link_to "Order by Number of Beers", "/breweries?order_by=num_beers"%></p>
 <p><%= link_to "New Brewery", "/breweries/new" %></p>
+
+<%= form_with url: "/breweries", method: :get, local: true do |form| %>
+  <%= form.label :exact_match, "Search exact name: " %>
+  <%= form.text_field :exact_match %>
+  <%= form.submit "Search Exact" %>
+<% end %>
