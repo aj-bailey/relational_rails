@@ -41,6 +41,12 @@ RSpec.describe Brewery, type: :model do
         expect(Brewery.exact_match("Bonfire Brewing")).to eq([@brewery_1])
       end
     end
+
+    describe '::partial_match' do
+      it 'retrieves list of breweries with partial match for name' do
+        expect(Brewery.partial_match("Company")).to eq([@brewery_2, @brewery_3])
+      end
+    end
   end
 
   describe 'instance methods' do
