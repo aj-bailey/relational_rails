@@ -31,5 +31,11 @@ RSpec.describe Beer, type: :model do
         expect(Beer.list_above_abv(5.0)).to eq([@beer_2, @beer_3])
       end
     end
+
+    describe '::exact_match' do
+      it 'retrieves list of beers with exact match for style' do
+        expect(Beer.exact_match("Stout")).to eq([@beer_1])
+      end
+    end
   end
 end
