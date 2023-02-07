@@ -50,6 +50,31 @@ RSpec.describe "Breweries Index Page", type: :feature do
         expect(current_path).to eq("/breweries")
         expect(page).to_not have_content(@brewery_2.name)
       end
+      
+      it 'can see a link, Order by Number of Beers, to sort breweries by their number of beers and redirect to "/breweries with number beers listed for each"' do
+        brewery_3 = Brewery.create!(name: "Russian River Brewing Company", barrel_program: true, num_taps: 20)
+
+        beer_1 = Beer.create!(brewery: @brewery_1, style: "IPA", abv: 6.9, nitro: false)
+        beer_2 = Beer.create!(brewery: @brewery_1, style: "Brown Ale", abv: 5.2, nitro: false)
+
+        beer_3 = Beer.create!(brewery: @brewery_2, style: "IPA", abv: 7.0, nitro: false)
+        beer_4 = Beer.create!(brewery: @brewery_2, style: "Hazy IPA", abv: 6.8, nitro: false)
+        beer_5 = Beer.create!(brewery: @brewery_2, style: "ESB", abv: 5.4, nitro: true)
+
+        beer_9 = Beer.create!(brewery: brewery_3, style: "IPA", abv: 6.25, nitro: false)
+        beer_10 = Beer.create!(brewery: brewery_3, style: "Double IPA", abv: 8.0, nitro: false)
+        beer_11 = Beer.create!(brewery: brewery_3, style: "Sour Brown Ale", abv: 7.0, nitro: false)
+        beer_12 = Beer.create!(brewery: brewery_3, style: "Pilsner", abv: 5.35, nitro: false)
+
+        expect(page).to have_link("Order by Number of Beers", href: "/breweries?order_by=num_beers")
+
+        click_link "Order by Number of Beers"
+
+        expect(current_path).to eq("/breweries")
+        save_and_open_page
+        expect("Number of beers: 4").to appear_before("Number of beers: 3")
+        expect("Number of beers: 3").to appear_before("Number of beers: 2")
+      end
     end
   end
 end
