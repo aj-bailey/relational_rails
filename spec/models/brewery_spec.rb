@@ -35,6 +35,12 @@ RSpec.describe Brewery, type: :model do
         expect(Brewery.order_by_num_beers_descending).to eq([@brewery_3, @brewery_2, @brewery_1])
       end
     end
+
+    describe '::exact_match' do
+      it 'retrieves list of breweries with exact match for name' do
+        expect(Brewery.exact_match("Bonfire Brewing")).to eq([@brewery_1])
+      end
+    end
   end
 
   describe 'instance methods' do
