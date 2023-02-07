@@ -8,4 +8,8 @@ class Brewery < ApplicationRecord
   def num_beers
     beers.count
   end
+
+  def self.order_by_num_beers_descending
+    self.joins(:beers).group(:id).order('COUNT(beers.id) DESC')
+  end
 end
