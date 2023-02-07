@@ -21,12 +21,29 @@ RSpec.describe "Beers Index Page", type: :feature do
         expect(page).to have_content("Style: #{@beer_1.style}")
         expect(page).to have_content("ABV: #{@beer_1.abv}")
         expect(page).to have_content("Nitro: #{@beer_1.nitro}")
+
+        expect(page).to have_content("Beer ID: #{@beer_2.id}")
+        expect(page).to have_content("Brewery ID: #{@beer_2.brewery_id}")
+        expect(page).to have_content("Created at: #{@beer_2.created_at}")
+        expect(page).to have_content("Updated at: #{@beer_2.updated_at}")
+        expect(page).to have_content("Style: #{@beer_2.style}")
+        expect(page).to have_content("ABV: #{@beer_2.abv}")
+        expect(page).to have_content("Nitro: #{@beer_2.nitro}")
       end
 
+      it "can see a link, Show Nitro Beers, to only list nitro beers and their attributes" do
+        expect(page).to have_link("Show Nitro Beers", href: "/beers?find=nitro_beers")
+
+        click_link "Show Nitro Beers"
+
+        expect(current_path).to eq("/beers")
+        expect(page).to_not have_content(@beer_2.id)
+      end
+      
       it "can see a link next to each beer leading to their edit page" do
         expect(page).to have_link("Edit Beer", href: "/beers/#{@beer_1.id}/edit")
 
-        click_link("Edit Beer")
+        click_link "Edit Beer", match: :first
 
         expect(current_path).to eq("/beers/#{@beer_1.id}/edit")
       end
@@ -34,7 +51,7 @@ RSpec.describe "Beers Index Page", type: :feature do
       it "can see a link next to each beer to delete the beer and return back to the beers table without that beer" do
         expect(page).to have_link("Delete Beer", href: "/beers/#{@beer_1.id}")
 
-        click_link("Delete Beer")
+        click_link "Delete Beer", match: :first
 
         expect(current_path).to eq("/beers")
         expect(page).to_not have_content(@beer_1.id)
