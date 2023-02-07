@@ -18,7 +18,7 @@ RSpec.describe Brewery, type: :model do
       end
     end
 
-    describe '::order_by_num_beers_ascending' do
+    describe '::order_by_num_beers_descending' do
       it 'orders breweries by number of beers in ascending order' do
         beer_1 = Beer.create!(brewery: @brewery_1, style: "IPA", abv: 6.9, nitro: false)
         beer_2 = Beer.create!(brewery: @brewery_1, style: "Brown Ale", abv: 5.2, nitro: false)
@@ -32,7 +32,7 @@ RSpec.describe Brewery, type: :model do
         beer_11 = Beer.create!(brewery: @brewery_3, style: "Sour Brown Ale", abv: 7.0, nitro: false)
         beer_12 = Beer.create!(brewery: @brewery_3, style: "Pilsner", abv: 5.35, nitro: false)
 
-        expect(Brewery.order_by_num_beers_ascending).to eq([@brewery_3, @brewery_2, @brewery_1])
+        expect(Brewery.order_by_num_beers_descending).to eq([@brewery_3, @brewery_2, @brewery_1])
       end
     end
   end
