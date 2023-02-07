@@ -18,3 +18,9 @@
   <%= form.text_field :exact_match %>
   <%= form.submit "Search Exact" %>
 <% end %>
+<br>
+<%= form_with url: "/beers", method: :get, local: true do |form| %>
+  <%= form.label :partial_match, "Search partial style: " %>
+  <%= form.text_field :partial_match %>
+  <%= form.submit "Search Partial" %>
+<% end %>
