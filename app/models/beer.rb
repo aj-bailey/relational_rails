@@ -16,4 +16,8 @@ class Beer < ApplicationRecord
   def self.exact_match(style)
     self.where(style: style)
   end
+
+  def self.partial_match(style)
+    self.where('style like ?', "%#{style}%")
+  end
 end
