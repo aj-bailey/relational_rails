@@ -5,6 +5,7 @@
       <% if @order_by == "num_beers" %>
         || Number of beers: <%= brewery.num_beers %>
       <% end %>
+      || <%= link_to "Show Brewery", "/breweries/#{brewery.id}" %>
       || <%= link_to "Edit Brewery", "/breweries/#{brewery.id}/edit" %>
       || <%= link_to "Delete Brewery", "/breweries/#{brewery.id}", method: :delete %>
     <p></div>
